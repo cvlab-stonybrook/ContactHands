@@ -1,0 +1,13 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  META_ARCHITECTURE: "SecondStreamRCNN"
+  WEIGHTS: "detectron2://COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x/138205316/model_final_a3ec72.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 101 
+  ROI_HEADS:
+    NAME: "SecondStreamROIHeads"
+    SCORE_THRESH_TEST: 0.05
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

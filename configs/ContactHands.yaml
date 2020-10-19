@@ -1,0 +1,33 @@
+_BASE_: "mask_rcnn_R_101_FPN_3x.yaml"
+MODEL:
+    META_ARCHITECTURE: "FirstStreamRCNN"
+    WEIGHTS: "detectron2://COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x/138205316/model_final_a3ec72.pkl"
+    ROI_HEADS:
+        NAME: "FirstStreamROIHeads"
+        NUM_CLASSES: 1
+        NMS_THRESH_TEST: 0.3
+        SCORE_THRESH_TEST: 0.7
+    BACKBONE:
+        FREEZE_AT: 2
+        NAME: "build_resnet_fpn_backbone"
+    CONTACT_HEAD_ON: True
+    ROI_CONTACT_HEAD:
+        NAME: "ContactHead"
+        POOLER_RESOLUTION: 7
+        POOLER_SAMPLING_RATIO: 0
+        POOLER_TYPE: "ROIAlignV2"
+        LOSS_WEIGHT: 1.0
+        HAND_FCS: [1024]
+        HAND_OBJECT_FCS: [1024]
+        PROJECT_DIMS: [256]
+        NUM_SPATIAL_ATTENTION: 32
+        USE_INTERSECTION: False
+DATASETS:
+    TRAIN: ("ContactHands_train",)
+    TEST: ("ContactHands_test",)
+SOLVER:
+    CHECKPOINT_PERIOD: 20000
+    IMS_PER_BATCH: 1
+    BASE_LR: 0.001
+    MAX_ITER: 300000
+OUTPUT_DIR: "./outputs/" 
