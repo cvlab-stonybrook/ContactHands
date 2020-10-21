@@ -2,7 +2,7 @@
 
 This repository contains the code and data for the following paper:
 
-Detecting Hands and Recognizing Physical Contact in the Wild (NeurIPS 2020).
+[Detecting Hands and Recognizing Physical Contact in the Wild](https://www3.cs.stonybrook.edu/~sunarasimhas/webpage/contacthands.pdf) (NeurIPS 2020).
 
 ## Contents
 
@@ -103,3 +103,14 @@ If the predicted contact state score for all three of them are less than the cor
 
 The output images with hand detections and contact state visualizations will be stored in `./results/`. 
 
+## References
+If you find our code or dataset useful, please cite our work using the following:
+
+```
+@inproceedings{contacthands_2020,
+  title={Detecting Hands and Recognizing Physical Contact in the Wild},
+  author={Supreeth Narasimhaswamy and Trung Nguyen and Minh Hoai},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2020},
+}
+```
